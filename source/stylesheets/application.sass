@@ -1,0 +1,1419 @@
+@import 'variables'
+@import 'reboot'
+@import 'normalize'
+@import 'debug'
+@import 'bootstrap'
+
+
+// General ------------------------------------
+html
+	+background-image('noise_mask_40.png')
+	background-color: #d5d5d5
+
+body
+	background: transparent
+	min-height: 100%
+	padding-top: 62px
+	position: relative
+	>
+		.container
+			background: white
+			@media screen and (max-width: $screen-sm)
+				padding-left: 0
+				padding-right: 0
+	
+// handling images
+// **********************
+img
+	display: block
+	max-width: 100%
+	&.gemoji
+		display: inline-block
+
+=desaturate
+	filter: gray //IE6-9
+	filter: grayscale(1)  //Firefox 35+
+	-webkit-filter: grayscale(1) // Google Chrome, Safari 6+ & Opera 15+
+=saturate
+	filter: none
+	-webkit-filter: grayscale(0)
+
+figure
+	&.wide
+		img
+			width: 100%
+	margin: 0
+	margin-bottom: $box-pad
+
+figcaption
+	padding-top: $box-pad
+	font-size: $font-size-small
+
+a
+	&:hover
+		text-decoration: underline	
+	// +transition(200ms)
+
+p
+	strong, b
+		font-weight: normal
+		font-family: 'UniversLTStd-Bold'
+ul
+	margin: 0
+	padding: 0
+	li
+		list-style-type: none
+b
+	font-weight: normal
+i
+	font-style: normal
+
+// Typography
+h1, h2, h3, h4, h5, h6 
+	font-family: UniversLTStd-Bold
+	margin-top: 0
+	line-height: 1.3
+	margin-bottom: $box-pad
+
+h1
+	font-size: $font-size-base * $pi / 1.5
+	font-family: 'UniversLTStd-Bold'
+h2
+	font-family: 'UniversLTStd-Bold'
+	font-size: $font-size-base * $pi / 2
+	margin-bottom: $grid-gutter-width /2
+h3
+	font-size: $font-size-base * $pi / 2.5
+h4
+	font-size: $font-size-base
+
+@font-face
+	font-family: 'UniversLTStd'
+	src: url('/fonts/UniversLTStd.eot?#iefix') format('embedded-opentype'), url('/fonts/UniversLTStd.otf') format('opentype'), url('/fonts/UniversLTStd.woff') format('woff'), url('/fonts/UniversLTStd.ttf') format('truetype'), url('/fonts/UniversLTStd.svg#UniversLTStd') format('svg')
+	font-weight: normal
+	font-style: normal
+
+@font-face
+	font-family: 'UniversLTStd-Black'
+	src: url('/fonts/UniversLTStd-Black.eot?#iefix') format('embedded-opentype'), url('/fonts/UniversLTStd-Black.otf') format('opentype'), url('/fonts/UniversLTStd-Black.woff') format('woff'), url('/fonts/UniversLTStd-Black.ttf') format('truetype'), url('/fonts/UniversLTStd-Black.svg#UniversLTStd-Black') format('svg')
+	font-weight: normal
+	font-style: normal
+
+@font-face
+	font-family: 'UniversLTStd-Bold'
+	src: url('/fonts/UniversLTStd-Bold.eot?#iefix') format('embedded-opentype'),url('/fonts/UniversLTStd-Bold.otf')format('opentype'), url('/fonts/UniversLTStd-Bold.woff') format('woff'), url('/fonts/UniversLTStd-Bold.ttf')format('truetype'), url('/fonts/UniversLTStd-Bold.svg#UniversLTStd-Bold') format('svg')
+	font-weight: normal
+	font-style: normal
+
+// Scaffolding ---------------------------------
+.row, .content
+	width: 100%
+
+.content
+	> section
+		+clearfix
+		padding: $box-pad * 2 0
+	header
+		margin-bottom: $grid-gutter-width
+
+// Header --------------------------------------
+.logo
+	float: left
+	padding: $box-pad/2 $box-pad/2 0
+	max-width: 110px
+	display: block
+	@media screen and (min-width: $screen-sm)
+		padding-left: 0px
+	@media screen and (min-width: $screen-md)
+		margin-right: $box-pad
+	strong
+		font-weight: normal
+		display: none
+		&:hover &
+			display: inline-block
+
+nav.navbar
+	+background-image('noise_mask_40.png')
+	background-color: #d5d5d5
+	padding-top: 7px
+	border-bottom: 0px
+	div.container
+		@media screen and (min-width: $screen-sm)
+			padding-left: 0
+			padding-right: 0
+		// background: transparent
+		// padding: 0
+	.btn-apply
+		@media screen and (max-width: $screen-sm)
+			position: absolute
+			top: 7px
+			right: 80px
+		@media screen and (min-width: $screen-md)
+			padding-left: 2em
+			padding-right: 2em
+		float: right
+		margin-top: 8px
+		font-size: $font-size-small
+
+ul.nav
+	float: left
+	li
+		@media screen and (min-width: $screen-sm)
+			border-bottom: 5px solid transparent	
+			+transition(200ms)
+			&.active
+				border-bottom: 5px solid white
+		&.active a
+			color: $blue
+			// background: white
+		a
+			&:hover,
+			&:active,
+			&:focus
+				background: transparent
+				text-decoration: underline
+			@media screen and (min-width: $screen-md)
+				padding-left: 10px
+				padding-right: 10px 
+			padding-left: 7px
+			padding-right: 7px 
+			font-size: 15px
+			font-family: 'UniversLTStd-Bold'
+
+.navbar-toggle
+	background: #e6e6e6
+	.icon-bar
+		background: #000
+	// .collapsed
+		// background: green
+
+.navbar-collapse.collapse.in,
+.navbar-collapse.collapsing
+	+transition(0)
+	ul.nav.navbar-nav
+		float: none
+		margin-bottom: 0
+	li
+		border-bottom: 0
+	a
+		&:active,
+		&:focus
+			background: white
+		&:hover
+			background: #e6e6e6
+			// color: white
+			text-decoration: none
+
+		display: block
+		text-align: right
+		padding: $grid-gutter-width/4 $grid-gutter-width/2
+
+// Intro --------------------------------------
+.intro
+	@media screen and (min-width: $screen-sm)
+		margin-right: -$grid-gutter-width/2
+		margin-left: -$grid-gutter-width/2
+	
+	+background-image('intro_banner_numa.jpg')
+	padding-top: 85%
+	@media screen and (min-width: $screen-xs)
+		padding-top: 66%
+	@media screen and (min-width: $screen-sm)
+		padding-top: 58%
+	
+	background-color: fade-out($c02, 0.4)
+	background-blend-mode: lighten
+	background-size: cover
+	position: relative
+	.wrap
+		text-align: center
+		background-color: fade-out($c15, 0.7)
+		+stretch
+		> div
+			display: table
+			+square(100%)
+
+.heading
+	a
+		&:hover
+			text-decoration: none
+		color: white
+		text-decoration: underline
+	display: table-cell
+	color: white
+	vertical-align: middle
+	> *
+		max-width: 800px
+		+center-block
+	h1, p
+		font-family: 'UniversLTStd-Bold'
+		text-shadow: 1px 1px 0px fade-out(#000, .4)
+	h1
+		padding-top: $grid-gutter-width
+		@media screen and (min-width: 330px)
+			padding-left: 0
+			padding-right: 0
+		margin-bottom: 10px
+		font-size: 2em
+		line-height: 1em
+		margin-bottom: 0
+	p
+		font-size: 1.1em
+	span
+		height: auto
+	
+	@media screen and (min-width: $screen-xs)
+		h1
+			font-size: 2.2em
+			padding-left: $grid-gutter-width/4
+			padding-right: $grid-gutter-width/4
+			// margin-bottom: $box-pad/2
+		p
+			font-size: 1.2em
+	
+	@media screen and (min-width: $screen-sm)
+		h1
+			font-size: 3.3em
+		p
+			font-size: 1.7em
+
+	@media screen and (min-width: $screen-md)
+		h1
+			font-size: 4.8em
+		p
+			font-size: 1.8em
+	
+	a.btn-apply
+		b
+			display: block
+			padding-top: 5px
+
+.countdown
+	div
+		border-radius: 9px
+		display: inline-block
+		font-size: 1.4em
+		line-height: 1em
+		font-family: 'UniversLTStd-Bold'
+		padding: 0px 5px
+		margin: 0px 4px
+		span
+			font-weight: normal
+			// font-family: 'UniversLTStd'
+			font-size: 0.36em
+			line-height: 1em
+			display: block
+			text-transform: uppercase
+
+.btn
+	&:focus, &:active
+		box-shadow: none
+	&.btn-info
+		&:hover, &:active, &:focus
+			background: white
+			color: $blue
+		&:hover
+			text-decoration: none
+		
+		font-family: 'UniversLTStd-Bold'
+		background: white
+		color: $blue
+		font-size: 1em
+		b
+			font-family: UniversLTStd
+			font-size: 0.8em
+			display: block
+	&.play-vid
+		opacity: 0
+		position: relative
+		vertical-align: middle
+		+background-image('icon_play.svg')
+		background-size: 100% auto
+		+center-block
+		+square(35px)
+		@media screen and (min-width: $screen-sm)
+			+square(60px)
+
+section#video
+	.le-tv
+		overflow: hidden
+		position: relative
+		+size(300px, 329px)
+		+center-block
+		+background-image('tv.svg')
+		background-repeat: no-repeat
+		background-size: 100% auto
+		.inside
+			&:hover .play-vid
+				opacity: 1
+			+background-image('cat.gif')
+			background-size: 100% auto
+			padding-top: 20%
+			top: 15%
+			left: 2.5%
+			right: 2.5%
+			bottom: 31%
+			position: absolute
+			border-radius: 10px
+
+.vidholder
+	background: black
+	+center-block
+	+sze(100%, 60%)
+	@media screen and (min-width: $screen-sm)
+		+sze(600px, 375px)
+	height: 0
+	overflow: hidden
+	position: relative
+	> div
+		+stretch
+	.vidthumb
+		z-index: 10
+		cursor: pointer
+		&:hover
+			img.playbtn
+				+saturate
+
+	img.playbtn
+		+center-block
+		width: 13%
+		+transition(250ms)
+		+desaturate
+		opacity: .95
+	
+	img.thumb
+		margin-top: 8.6%
+		width: 100%
+
+.le-play
+	z-index: 11
+	position: absolute
+	top: 40%
+	left: 0
+	right: 0
+
+//Accelerator ----------------------------------
+.agenda
+	@media screen and (max-width: $screen-sm)
+		margin-top: $grid-gutter-width
+		margin-bottom: $grid-gutter-width
+	@media screen and (min-width: $screen-xs)
+		max-width: 370px
+	+center-block
+	li
+		font-size: 15px
+		font-family: UniversLTStd-Bold
+		text-shadow: 1px 1px 1px fade-out(#000, 0.9)
+		display: block
+		border-bottom: 2px solid white
+		line-height: 37px
+		margin-bottom: 2px
+		color: white
+		// &:nth-child(3)
+		// 	outline: 4px solid white
+		// 	background-color: white
+		// 	color: black
+		// 	text-shadow: none
+		// 	padding-left: 5px
+		&:first-child
+			font-weight: bold
+			&:before
+				content: ''
+				display: inline-block
+				margin-right: 10px
+				+background-image('icon_calendar.svg')
+				+square(25px)
+				vertical-align: middle
+		&:last-child
+			text-align: center
+			padding-top: $box-pad
+			border-bottom: none
+			.btn-apply
+				padding-left: 2em
+				padding-right: 2em
+	
+	
+	@media screen and (max-width: 330px)
+		padding: $box-pad 5px
+	
+	padding: $box-pad
+	background: fade-in($orange, .3)
+	@media screen and (min-width: $screen-md)
+		margin-top: -150px
+	b
+		border-left: 2px solid white
+		display: inline-block
+		width: 130px
+		float: right
+		padding-left: 5px
+
+ul.metrics
+	display: block
+	clear: both
+	padding: $box-pad 0
+	border-bottom: 1px solid $orange
+	li
+		@media screen and (max-width: $screen-sm)
+			min-height: 170px
+		@media screen and (max-width: $screen-xs)
+			padding-left: 0
+			padding-right: 0
+		
+		&:last-child
+			&:after
+				display: none
+		&:after
+			content: ''
+			border-right: 1px solid $orange
+			display: block
+			height: 50px
+			top: 0
+			right: 0
+			position: absolute
+		
+		position: relative
+		display: inline-block
+		text-align: center
+		strong
+			display: block
+			color: $orange
+			b
+				line-height: 1em
+				font-size: 2.7em
+				display: block
+	
+	strong, b
+		font-family: 'UniversLTStd-Bold'
+
+#agenda.col-sm-12.col-md-5.col-lg-4
+	margin-left: 0
+	margin-right: 0
+	padding-left: 0
+	padding-right: 0
+
+//Wanted ----------------------------------
+ul.wanted
+	clear: both
+	display: block
+	li
+		text-align: center
+		@media screen and (max-width: 330px)
+			strong
+				font-size: $font-size-small
+		@media screen and (max-width: $screen-sm)
+			strong
+				min-height: 60px
+				display: block
+				font-family: 'UniversLTStd-Bold'
+		@media screen and (max-width: $screen-xs)
+			padding-left: 5px
+			padding-right: 5px
+
+		&:before
+			display: block
+			content: ''
+			+size(70%, 0)
+			+center-block
+			padding-top: 70%
+			margin-bottom: 10px
+			border-radius: 100%
+		&:nth-child(1)
+			&:before
+				+background-image('mid_stage.svg')
+				background-size: auto 70%
+				background-position: center
+				background-repeat: no-repeat
+		&:nth-child(2)
+			&:before
+				+background-image('early_stage.svg')
+				background-size: auto 70%
+				background-position: center
+				background-repeat: no-repeat
+		&:nth-child(3)
+			&:before
+				+background-image('various_industries.svg')
+				background-size: auto 70%
+				background-position: center
+				background-repeat: no-repeat
+		&:nth-child(4)
+			&:before
+				+background-image('digital.svg')
+				background-size: auto 70%
+				background-position: center
+				background-repeat: no-repeat
+
+//Program ----------------------------------
+ul.keypoints
+	padding: $box-pad 0
+	clear: both
+	+clearfix
+	li
+		text-align: center
+		padding: 20px 0
+		border: 10px solid white
+		&:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8)
+			display: none
+
+.this
+	clear: both
+	position: relative
+	@media screen and (min-width: $screen-sm)
+		margin-right: - $grid-gutter-width/2
+		margin-left: - $grid-gutter-width/2
+	padding-bottom: $grid-gutter-width
+	// @media screen and (min-width: $screen-md)
+	display: table
+	h3
+		text-align: center
+		font-family: 'UniversLTStd-Black'
+	li
+		&:before
+			display: block
+			content: ''
+			border-radius: 100%
+			+size(50%, 0)
+			+center-block
+			padding-top: 50%
+			margin-bottom: 10px
+		
+		@media screen and (min-width: $screen-md)
+			display: table-cell
+			width: 25%
+		
+		text-shadow: 1px 1px 1px fade-out(#000, 0.9)
+		color: white
+		padding: $grid-gutter-width/2
+
+		strong
+			// &:before
+			// 	content: '⁓'//'•' 
+			// 	position: absolute
+			// 	+size(10px, 10px)
+			// 	bottom: 10px
+			// 	left: 48%
+			// 	color: white
+			b
+				font-family: 'UniversLTStd-Black'
+			position: relative
+			display: block
+			padding-bottom: $grid-gutter-width/2
+			// margin-bottom: $grid-gutter-width/4
+			// border-bottom: 1px dotted orange
+		&:nth-child(1)
+			&:before
+				+background-image('plant.svg')
+				background-size: auto 80%
+				background-position: center
+				background-repeat: no-repeat
+			padding-left: $grid-gutter-width
+			+gradient-directional($orange, $blue, -30deg)
+		&:nth-child(2)
+			&:before
+				+background-image('bowtie.svg')
+				background-size: auto 80%
+				background-position: center
+				background-repeat: no-repeat
+			+gradient-directional($orange, $blue, -30deg)
+		&:nth-child(3)
+			&:before
+				+background-image('lamp.svg')
+				background-size: auto 80%
+				background-position: center
+				background-repeat: no-repeat
+			+gradient-directional($orange, $blue, -30deg)
+		&:nth-child(4)
+			&:before
+				+background-image('money.svg')
+				background-size: auto 80%
+				background-position: center
+				background-repeat: no-repeat
+			+gradient-directional($orange, $blue, -30deg)
+			padding-right: $grid-gutter-width
+
+.partners,
+.perks
+	h2
+		padding-left: 20px
+	li
+		&:hover img
+			+saturate
+	img[alt="twitter"]
+		width: 50px
+	img[alt="bizpack"]
+		bottom: -13px 
+		position: relative
+	img
+		+transition(250ms)
+		+desaturate
+
+#partners
+	text-align: center
+
+.partners
+	li
+		padding: $grid-gutter-width/2
+		&:nth-child(1) img
+			max-width: 70px
+			position: relative
+			bottom: -20px
+		&:nth-child(2) img
+			max-width: 150px
+		&:nth-child(3) img
+			max-width: 100px
+		&:nth-child(4) img	
+			max-width: 130px
+
+		display: inline-block
+		img
+			display: block
+			max-width: 130px
+
+.perks
+	margin-bottom: $grid-gutter-width * 2
+	li
+		display: none // !important
+		padding: $grid-gutter-width/4 $grid-gutter-width/2
+		img
+			max-width: 100px
+	ul
+		&.extend
+			li.showmore
+				&:before
+					content: '▲ show less perks'
+			li
+				display: inline-block
+
+		position: relative
+		display: block
+		padding-bottom: $box-pad * 2
+		
+		// &, *
+			// outline: 1px solid red
+		
+		li
+			&:nth-child(-n+15)
+				display: inline-block
+
+			&.showmore
+				&:hover
+					&:before
+						color: #333
+				&:before
+					content: '▼ show all perks'
+					color: black
+					line-height: 1px
+				
+				display: block
+				color: transparent
+				height: auto
+				position: absolute
+				padding: 6px 0 0 0
+				bottom: 0
+				min-width: 200px
+				padding-left: 10px
+				left: 26px
+				right: auto
+				cursor: pointer
+
+.showmore
+	&:hover
+		background: fade-out(#dfdfdf, 0.3)
+		&:before
+			color: #333
+	&:before
+		content: '▼ show all perks'
+		color: black
+		line-height: 1px
+	
+	box-shadow: inset 0px 0px 0px 1px fade-out(#dfdfdf, 0.4)
+	border-radius: 10px
+	display: block
+	color: transparent
+	position: absolute
+	bottom: 0
+	left: 20px
+	right: 20px
+	cursor: pointer
+
+
+// Timeline ---------------
+section#timeline
+	//nothing here yet	
+
+ul.step
+	&.extend
+		li
+			height: auto
+			padding: $box-pad/2 0
+			border-bottom: 1px dotted black
+			&.showmore
+				&:before
+					content: '▲ less info'
+
+	// &, *
+	// 	outline: 1px dotted red
+	
+	&, h3, em
+		display: block
+	position: relative
+	padding-bottom: $box-pad
+	margin-top: $grid-gutter-width/2
+	margin-bottom: $grid-gutter-width
+	@media screen and (min-width: $screen-sm)
+		margin-bottom: 0
+	h3
+		padding-top: 30px
+		font-size: 20px
+		margin-bottom: $box-pad/2
+		em
+			font-style: normal
+			font-size: 17px
+	li
+		+transition(100ms)
+		position: relative
+		overflow: hidden
+		height: 0 //the magic
+
+		&:nth-child(2)
+			height: auto
+			padding-top: $box-pad/2
+
+		&:last-child
+			font-style: italic
+			font-size: $font-size-small
+			border-bottom: none
+
+		&.showmore
+			&:before
+				content: '▼ more info'
+			height: auto
+			position: absolute
+			border-bottom: 0
+			padding: 6px 0 0 10px
+
+
+.one, .two, .three
+	position: relative
+	&:after
+		content: ''
+		height: 23px
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		color: white
+		padding-left: 70px
+		z-index: 0
+	&:before
+		z-index: 1
+		display: block
+		position: absolute
+		top: -20px
+		left: 20px
+		background: black
+		+square(36px)
+		border-radius: 100%
+		text-align: center
+		color: white
+		font-family: 'UniversLTStd-Bold'
+
+.one
+	&:after
+		+gradient-horizontal($orange, $blue)
+		content: ''
+	&:before
+		padding-top: 9px
+		content: '1'
+.two
+	&:after
+		content: ''
+		+gradient-horizontal($blue, #ff0000)
+	&:before
+		padding-top: 9px
+		content: '2'
+.three
+	&:after
+		content: ''
+		+gradient-horizontal(red, black)
+	&:before
+		padding-top: 9px
+		content: '3'
+
+//Team & Mentors ----------------------------------
+
+ul.people
+	clear: both
+	display: block
+	li
+		@media screen and (min-width: $screen-lg)
+			min-height: 290px
+		min-height: 330px
+		text-align: center
+		strong, em, span
+			display: block
+		strong
+			padding: $box-pad/2 0
+			font-weight: normal
+			font-family: 'UniversLTStd-Bold'
+		em
+			font-style: normal
+			font-size: 15px
+			font-family: 'UniversLTStd'
+		&:hover
+			a
+				opacity: 0.5
+		a
+			opacity: 0
+			&:hover
+				opacity: 1
+
+		
+	
+			// opacity: 0.1
+.avatar
+	+center-block
+	position: relative
+	max-width: 200px
+	img
+		position: relative
+		overflow: hidden
+		border-radius: 100% 
+		overflow: hidden
+
+.linkedin, .twitter
+	bottom: 0
+	position: absolute
+	padding-top: 20px
+	+transition(200ms)
+	+square(20px)
+	background-size: 20px auto
+	background-repeat: no-repeat
+	overflow: hidden
+
+.linkedin
+	right: 0
+	+background-image('linkedin.svg')
+
+.twitter
+	left: 0
+	+background-image('twitter.svg')
+
+
+//Stories ----------------------------------
+blockquote
+	border-left: 2px dashed $body-bg
+	font-size: $font-size-base
+	font-style: italic
+	display: block
+
+
+.stories
+	> *
+		display: block
+	li
+		&:hover
+			.photo
+				&:before
+					background-color: fade-out($blue, 0.9)
+				img
+					+saturate
+		margin-bottom: $grid-gutter-width
+		@media screen and (min-width: $screen-md)
+			margin-bottom: 0
+		max-width: 400px
+		+center-block
+	.photo
+		&:before
+			+transition(200ms)
+			content: ''
+			+stretch
+			background-color: fade-out($orange, 0.7)
+			background-blend-mode: multiply
+			z-index: 1000
+		position: relative
+		img
+			+transition(200ms)
+			z-index: 1
+			+desaturate
+		display: block
+		clear: both
+		margin-bottom: $grid-gutter-width/2
+	.name
+		font-family: 'UniversLTStd-Bold'
+		margin-bottom: $box-pad/2
+	.role
+		display: block
+		margin-bottom: $box-pad/2
+	
+	$photo : 200px
+	
+	@media screen and (min-width: $screen-sm) and (max-width: $screen-md)
+		width: 100%
+		margin-bottom: 20px
+		li
+			max-width: 100%
+			width: 100%
+		.photo
+			max-width: $photo
+			float: left
+		.name, .role, .story
+			margin-left: $photo + $grid-gutter-width/2
+
+
+.quotes
+	display: none
+	h4
+		margin-bottom: $grid-gutter-width/4
+	li
+		@media screen and (max-width: $screen-sm)
+			margin-bottom: $grid-gutter-width
+	.photo
+		// outline: 1px solid red
+		img
+			max-height: 40px
+			margin-bottom: $grid-gutter-width/2
+	.where
+		text-size: $font-size-small
+		padding-top: $grid-gutter-width/2
+		a
+			&.Techcrunch
+				+background-image('tc.gif')
+				background-repeat: no-repeat
+				background-position: top left
+				background-size: auto auto
+			&.Rudebaguette
+				+background-image('rb.gif')
+				background-repeat: no-repeat
+				background-position: top left
+				background-size: auto auto
+			text-decoration: underline
+			padding: 6px 3px 3px 60px
+			display: block
+
+
+//International ----------------------------------
+
+// #international
+.inc
+	@media screen and (max-width: $screen-md)
+		li
+			&:before
+				content: '• '
+			display: inline-block
+			padding: 3px 10px 1px
+			margin: 3px 2px 0 0
+		text-align: center
+		margin-bottom: $grid-gutter-width/2
+	li
+		&:hover
+			text-decoration: underline
+		+transition(200ms)
+		cursor: pointer
+		font-family: 'UniversLTStd-Bold'
+		line-height: 1.5em
+
+.le-mapcontainer
+	#map
+		opacity: .9
+	padding-top: $grid-gutter-width
+	clear: both
+
+#map
+	+background-image('map.svg')
+	background-size: 100% auto
+	background-repeat: no-repeat
+	padding-top: 56%
+	height: 0px
+	overflow: hidden
+	position: relative
+
+@-moz-keyframes pulse
+	0%
+		-moz-transform: scale(0)
+		opacity: 0.0
+	25%
+		-moz-transform: scale(0)
+		opacity: 0.1
+	50%
+		-moz-transform: scale(0.1)
+		opacity: 0.3
+	75%
+		-moz-transform: scale(0.5)
+		opacity: 0.5
+	100%
+		-moz-transform: scale(1)
+		opacity: 0.0	
+@-webkit-keyframes "pulse"
+	0%
+		-webkit-transform: scale(0)
+		opacity: 0.0
+	25%
+		-webkit-transform: scale(0)
+		opacity: 0.1
+	50%
+		-webkit-transform: scale(0.1)
+		opacity: 0.3
+	75%
+		-webkit-transform: scale(0.5)
+		opacity: 0.5
+	100%
+		-webkit-transform: scale(1)
+		opacity: 0.0
+
+=animation($name, $time, $type)
+	-webkit-animation: $name $time $type //ease-out
+	-moz-animation: $name $time $type //ease-out
+	animation: $name $time $type //ease-out
+
+=animation-iteration-count($times: infinite)
+	-webkit-animation-iteration-count: $times
+	-moz-animation-iteration-count: $times
+	animation-iteration-count: $times
+
+.le-mapcontainer:hover
+	#map
+		opacity: 1
+	.point
+		&:before
+			content: ''
+			display: block
+			+square(10px)
+			border-radius: 30px
+			z-index: 10
+			position: absolute
+		&:after
+			content: ''
+			display: block
+			border: 10px solid $orange
+			background: transparent
+			border-radius: 60px
+			+square(30px)
+			+animation(pulse, 2s, ease-out)
+			+animation-iteration-count()
+			position: absolute
+			top: -10px
+			left: -10px
+			z-index: 0
+			opacity: 0
+
+div.le-mapcontainer
+	&.new_york
+		.inc li.new_york
+			color: $blue
+		.point.new_york	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid $blue
+	&.Montreal
+		.inc li.Montreal
+			color: $blue
+		.point.Montreal	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.london
+		.inc li.london
+			color: $blue
+		.point.london	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Lisbon
+		.inc li.Lisbon
+			color: $blue
+		.point.Lisbon	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Mardid
+		.inc li.Mardid
+			color: $blue
+		.point.Mardid	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Berlin
+		.inc li.Berlin
+			color: $blue
+		.point.Berlin	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Munich
+		.inc li.Munich
+			color: $blue
+		.point.Munich	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Warshow
+		.inc li.Warshow
+			color: $blue
+		.point.Warshow	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Karachi
+		.inc li.Karachi
+			color: $blue
+		.point.Karachi	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Dubai
+		.inc li.Dubai
+			color: $blue
+		.point.Dubai	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Sydney
+		.inc li.Sydney
+			color: $blue
+		.point.Sydney	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Tel_Aviv
+		.inc li.Tel_Aviv
+			color: $blue
+		.point.Tel_Aviv	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Nairobi
+		.inc li.Nairobi
+			color: $blue
+		.point.Nairobi	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Johhannesburg
+		.inc li.Johhannesburg
+			color: $blue
+		.point.Johhannesburg	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Kampala
+		.inc li.Kampala
+			color: $blue
+		.point.Kampala	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Lagos
+		.inc li.Lagos
+			color: $blue
+		.point.Lagos	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Accra
+		.inc li.Accra
+			color: $blue
+		.point.Accra	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Venice
+		.inc li.Venice
+			color: $blue
+		.point.Venice	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Palo_Alto
+		.inc li.Palo_Alto
+			color: $blue
+		.point.Palo_Alto	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Durham
+		.inc li.Durham
+			color: $blue
+		.point.Durham	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	&.Chicago
+		.inc li.Chicago
+			color: $blue
+		.point.Chicago	
+			background-color: $blue
+			+box-shadow(0px 0px 7px $blue)
+			&:after
+				border: 10px solid blue
+	// &.numa.PARIS
+	// 	.inc li.Chicago
+	// 		color: $blue
+	// 	.point.numaPARIS
+	// 		background-color: red
+	// 		+box-shadow(0px 0px 7px red)
+	// 		&:after
+	// 			border: 10px solid blue
+
+.point
+	&.numa
+		&:after,
+		&:before
+			visibility: hidden
+		
+		outline: none
+		+square(20px)
+		+background-image('numa.svg')
+		background-position: center
+		background-size: 21px
+		background-repeat: no-repeat
+		// z-index: 10000
+		+transition(100ms)
+		&:hover
+			transform: scale(2)
+			background-color: black
+		// background-color: black
+		// +box-shadow(none)
+	position: relative
+	background-color: $orange
+	+box-shadow(0px 0px 7px $orange)
+	position: absolute
+	// background: $blue
+	position: absolute
+	+square(10px)
+	border-radius: 50%
+	&.new_york
+		+position(39,27.9)
+	&.Montreal
+		+position(33.2,27.3)
+	&.london
+		+position(30.6,46)
+	&.Lisbon
+		+position(41,43.5)
+	&.Mardid
+		+position(43.1,44.9)
+	&.Berlin
+		+position(32.5,49.4)
+	&.Munich
+		+position(35.7,49.4)
+	&.Warshow
+		+position(29.3,55.3)
+	&.Karachi
+		+position(44.8,64.8)
+	&.Dubai
+		+position(51.8,62.4)
+	&.Sydney
+		+position(77.5,90.5)
+	&.Tel_Aviv
+		+position(46, 57.3)
+	&.Nairobi
+		+position(62,58.1)
+	&.Johhannesburg
+		+position(76.4,52.4)
+	&.Kampala
+		+position(60,55.9)
+	&.Lagos
+		+position(58.5,48.1)
+	&.Accra
+		+position(58.5,45)
+	&.Venice
+		+position(38.8,50.7)
+	&.Palo_Alto
+		+position(46.2,13.6)
+	&.Durham
+		+position(42.3,25.6)
+	&.Chicago
+		+position(36.2,13.6)
+	&.numa.PARIS
+		+position(34.5,46.4)
+	&.numa.MOSCOW
+		+position(31.3,52.8)
+	&.numa.BENGALURU
+		+position(53,67.7)
+	&.numa.CASABLANCA
+		+position(48.3, 43.8)
+	&.numa.MEXIC
+		+position(50,18)
+	&.numa.BARCELONA
+		+position(41.9,44.4)
+		// outline: 2px solid red
+
+// Site Parts -----------------------------------
+
+.toppad
+	padding-top: 70px
+	h2,h3,h4
+		color: $blue
+	h3, h4
+		margin-top: $grid-gutter-width
+	h4
+		margin-bottom: $box-pad/2
+	a
+		&:hover
+			text-decoration: none
+		text-decoration: underline
+		color: $blue
+	li
+		&:before
+			content: '•'
+			position: relative
+			left: -10px
+		
+		padding-left: $box-pad/2
+		margin-bottom: $box-pad/2
+
+// Site Parts -----------------------------------
+ul.social // social links in the bootom footer
+	li
+		&:last-child
+			width: auto
+			font-size: $font-size-small	
+			vertical-align: top
+			padding-left: $box-pad
+		display: inline-block
+		width: 20px
+		margin-right: 10px
+		padding: 0
+
+.btn
+	border: none
+	text-decoration: none
+
+	&:hover
+		border: none
+	&.btn-apply
+		&:hover
+			background: darken($blue, 9)
+		background: $blue
+		color: white
+		font-family: 'UniversLTStd-Bold'
+
+footer
+	clear: both
+	padding: $grid-gutter-width/2 0
+	border-top: 1px solid #000
+
+.centerthis
+	padding: $grid-gutter-width/2 0 $grid-gutter-width 0
+	display: block
+	text-align: center
+

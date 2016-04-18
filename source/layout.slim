@@ -1,0 +1,63 @@
+doctype 5
+html lang=I18n.locale.to_s itemscope="itemscope" itemtype="http://schema.org/WebSite"
+  head    
+    = partial "meta"
+    title
+      - if current_page && current_page.data.title
+        = "#{emojify current_page.data.title} - "
+      - elsif content_for?(:title)
+        = "#{emojify yield_content(:title)} - "
+      = t 'blog.title'
+    link rel='author' href='http://www.twitter.com/numaparis'
+    - %w{152 144 120 114 76 72 60 67}.each do |size|
+      - size = "#{size}x#{size}"
+      link rel="apple-touch-icon" size=size href="/apple-touch-icon-#{size}-precomposed.png"
+      link rel="apple-touch-icon" href="/apple-touch-icon-precomposed.png"
+    link rel="shortcut icon" href="/favicon.png"
+    link rel="icon" type="image/ico" href="/favicon.ico"
+    
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    / = partial 'venobox'
+    / = partial 'hotjar'
+    javascript:
+      $(function() {
+        var endDate = "June 7, 2087 15:03:25";
+        $('.countdown.simple').countdown({
+          date: endDate,
+          render: function(data) {
+            $(this.el).html("<div class='days'>" + this.leadingZeros(data.days, 1) + " <span>days</span></div><div class='hours'>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div class='mins'>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div class='sec'>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+          }
+        });
+      });
+  
+  body data-spy="scroll" data-target="#mainnav"
+    nav.navbar.navbar-fixed-top#mainnav itemscope="itemscope" itemtype="http://www.search_sitema.org/SiteNavigationElement"
+      .container
+        .navbar-header
+          button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation" aria-expanded="false"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          =link_to config.site_url, :class => 'logo'
+            =image_tag('logo_numa.svg', :alt => 'NUMA')
+        = link_to 'Apply Now', 'https://www.f6s.com/numaparis-season9', :class => 'btn btn-apply', :target=> '_blank'
+        .collapse.navbar-collapse#navigation
+          /-if current_page.url === '/'
+          ul.nav.navbar-nav
+            li= current_page.url == "/" ? link_to('Accelerator', '#accelerator') : link_to('Accelerator', '/#accelerator')
+            li= current_page.url == "/" ? link_to('Wanted', '#wanted') : link_to('Wanted', '/#wanted')
+            li= current_page.url == "/" ? link_to('Program', '#program') : link_to('Program', '/#program')
+            li= current_page.url == "/" ? link_to('Team', '#team') : link_to('Team', '/#team')
+            li= current_page.url == "/" ? link_to('Portfolio', '#success') : link_to('Portfolio', '/#success')
+            li= link_to 'FAQ', 'http://apply.numa.co/faq/'
+            li= link_to 'How To Apply', "http://apply.numa.co/how-to-apply-successfully/"
+          / -else
+    .container
+      main == yield
+      footer
+        = partial "socialmedia"
+        
+    = google_analytics_universal_tag
+    = partial 'tagmanager'

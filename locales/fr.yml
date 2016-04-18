@@ -1,0 +1,40 @@
+---
+fr:
+  search_site: 'recherche'
+  search_result: 'resultats:'
+  links: 'liens'
+  similar_articles: 'articles similaires'
+  archives: 'archives'
+  show_all: 'voir tout'
+  previous_article: 'article precendent'
+  next_article: 'article suivant'
+  filter_tags: 'filtre par tag'
+  read_more: 'en savoir plus'
+  file_not_found: 'pas trouve'
+  navigation: 'navigation'
+  tags: 'les tags'
+  monthly: 'mois'
+  home: 'pagehome'
+  aboutme: 'qui suis-je'
+  visual: 'visuale'
+  tweet: 'tweet-le'
+  recent_entries: 'recentes'
+  calendar_description:
+    text: "%postees en {title}"
+  calendar_title:
+    text: "bla bla text par %{title}"
+    html: "ecrit par <time>%{title}</time>"
+    format:
+      day: "%d, %b, %Y"
+      month: "%b, %Y"
+      year: "%Y"
+  blog:
+    url: http://apply.numa.co
+    title: Apply for startup acceleration at NUMA
+    cname: apply.numa.co
+    description: The New Season for startup acceleration is now open
+  author:
+    name: 'The communication team at NUMA Paris'
+  tag_title:
+    text: "tagged: &quot;%{tag}&quot;"
+    html: "tagged: <q>%{tag}</q>"

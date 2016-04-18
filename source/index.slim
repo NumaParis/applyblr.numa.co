@@ -1,0 +1,265 @@
+---
+ogp:
+  og:
+    description: 'The applications season for startup acceleration is open. Feel free to Apply'
+    image:
+      '': http://apply.numa.co/images/fbcvr.jpg
+      secure_url: http://apply.numa.co/images/fbcvr.jpg
+      type: image/png
+      width: 400
+      height: 300
+    locale:
+      '': en_us
+      alternate:
+        - fr_FR
+        - en_EN
+  fb:
+    description: 'This is the moment to apply. Take the step to becoming real. Apply for startup acceleration at NUMA Paris'
+    image:
+      '': http://apply.numa.co/images/cover.jpg
+      secure_url: http://apply.numa.co/images/cover.jpg
+      type: image/png
+      width: 400
+      height: 300
+---
+	section.intro
+		.wrap
+			div
+				.heading
+					h1 =data.numa['intro'].find{ |p| p.name == 'heading' }.content
+					p =data.numa['intro'].find{ |p| p.name == 'subheading' }.content
+					p
+						a href="https://www.f6s.com/numaparis-season9" target="_blank" class='btn btn-lg btn-apply'
+							span class="countdown simple" data-date="April 24, 2016 00:00:25"
+							b Apply Now
+						| <div><a class='btn btn-info' target="_blank" href="https://paris.numa.co/Cycles-events/NUMA-Acceleration-Info-Sessions">Info Session at NUMA<b>25/4/16</b></a></div>
+
+	.content
+		section#accelerator
+			.col-sm-12.col-md-7.col-lg-8
+				header
+					h2 =data.numa['accelerator'].find{ |p| p.name == 'heading' }.content
+					p =data.numa['accelerator'].find{ |p| p.name == 'paragraph' }.content
+			
+			#agenda.col-sm-12.col-md-5.col-lg-4
+				ul.agenda
+					li Agenda for Season 9
+					-data.numa['intro'].each do |row|
+						li = row['agenda']
+					li =link_to 'Apply Now', "https://www.f6s.com/numaparis-season9", :class => 'btn btn-lg btn-apply', :target=> '_blank'
+			
+			ul.metrics.clearfix
+				-data.numa['accelerator'].each do |row|
+					li.col-xs-6.col-sm-3 = row['trackrecord']
+
+		section
+			.col-sm-12.text-center
+				header
+					h3 Check out the trailer from the last Demo Day
+			
+			javascript:
+				var embedCode = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/O6qXMYQb1_I?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>'
+			.vidholder
+				.vidthumb onclick="document.getElementById('videocontainer').innerHTML = embedCode; this.style.display='none'"
+					=image_tag 'screenshot.jpg', :class=>'thumb'
+					div.le-play=image_tag 'play.png', :class=>'playbtn'
+				#videocontainer
+
+		section#wanted
+			.col-sm-8
+				header
+					h2 =data.numa['wanted'].find{ |p| p.name == 'heading' }.content
+					p =data.numa['wanted'].find{ |p| p.name == 'paragraph' }.content
+			ul.wanted
+				-data.numa['wanted'].each do |row|
+					li.col-xs-6.col-sm-3 =row['criteria']? row['criteria'] : ""
+
+		section#program
+			.col-sm-8
+				header
+					h2 =data.numa['program'].find{ |p| p.name == 'heading' }.content
+					p =data.numa['program'].find{ |p| p.name == 'paragraph' }.content
+			
+			.this.clearfix
+				ul
+					-data.numa['program'].each do |row|
+						- if row['keypoints'] != nil
+							li
+								=row['keypoints']
+		
+
+		section#success
+			.col-sm-12
+				header
+					h2 =data.numa['stories'].find{ |p| p.title == 'heading' }.content
+					p =data.numa['stories'].find{ |p| p.title == 'paragraph' }.content
+			ul.stories.clearfix
+				-data.numa['stories'].each do |row|
+					li.col-md-4
+						.photo
+							= image_tag "#{row['picture']}", :alt=>"#{row['name']}"
+						h4.name
+							= row['name']
+						em.role
+							= row['role']
+						blockquote.story
+							p
+								= row['story']
+		
+
+		section#mentors
+			.col-sm-8
+				header
+					h2 =data.numa['mentors'].find{ |p| p.title == 'heading' }.content
+					p =data.numa['mentors'].find{ |p| p.title == 'paragraph' }.content
+			
+			ul.people
+				-data.numa['mentors'].each do |row|
+					li.col-xs-6.col-sm-4.col-md-3.col-lg-2
+						.avatar
+							= image_tag "#{row['photo']}", :alt=> "#{row['name']}"
+							- if row['linkedin'] != nil
+								= link_to 'a', "#{row['linkedin']}", :target=> '_blank', :class=> 'linkedin'
+							- if row['twitter'] != nil
+								= link_to 'a', "http://twitter.com/#{row['twitter']}", :class=> 'twitter'
+						strong
+							= row['name']
+							em
+								= row['role']
+		
+		/ section#quotes
+		/ 	.col-sm-12
+		/ 		header
+		/ 			/h2 =data.numa['quotes'].find{ |p| p.title == 'heading' }.content
+
+		/ 			/p =data.numa['quotes'].find{ |p| p.title == 'paragraph' }.content
+		/ 	ul.quotes.clearfix
+		/ 		-data.numa['quotes'].each do |row|
+		/ 			li.col-md-3
+		/ 				/ .photo
+		/ 				/ 	= image_tag "#{row['name']}.png", :alt=>"#{row['name']}"
+		/ 				h4.name = row['name']
+		/ 				em.quote
+		/ 					= row['quote']
+		/ 				div.where
+		/ 					- if row['where'] != nil
+		/ 						= link_to "#{row['where']}", "#{row['link']}", :class=> "#{row['where']}", :target=> "_blank"
+
+		section#team
+			.col-sm-12
+				header
+					h2 =data.numa['team'].find{ |p| p.title == 'heading' }.content
+					p =data.numa['team'].find{ |p| p.title == 'paragraph' }.content
+			
+			ul.people
+				-data.numa['team'].each do |row|
+					li.col-xs-6.col-sm-4.col-md-3.col-lg-2
+						.avatar
+							= image_tag "#{row['photo']}", :alt=> "#{row['name']}"
+							- if row['linkedin'] != nil
+								= link_to 'a', "#{row['linkedin']}", :target=> '_blank', :class=> 'linkedin'
+							- if row['twitter'] != nil
+								= link_to 'a', "http://twitter.com/#{row['twitter']}", :target=> '_blank', :class=> 'twitter'
+						strong
+							- if row['name'] != nil
+								= row['name']
+							em
+								- if row['role'] != nil
+									= row['role']
+
+		.perks.clearfix 
+			h2 Perks that rock !
+			ul
+				li.showmore 
+				-data.numa['perks'].each do |row|
+					li = image_tag "#{row['logo']}", :alt=> "#{row['name']}"
+
+		section#timeline
+			.col-sm-12
+				h2 Program Timeline
+			
+			ul.step.one.col-sm-4
+				li.showmore
+				- data.numa['program'].each do |row|
+					- if row['one'] != nil
+						li
+							= row['one']
+			
+			ul.step.two.col-sm-4
+				li.showmore
+				-data.numa['program'].each do |row|
+					- if row['two'] != nil
+						li
+							=row['two']
+			
+			ul.step.three.col-sm-4
+				li.showmore
+				-data.numa['program'].each do |row|
+					- if row['three'] != nil
+						li
+							=row['three']
+		section#global.clearfix
+			.col-sm-8
+				header
+					h2 =data.numa['global'].find{ |p| p.name == 'heading' }.content
+					p =data.numa['global'].find{ |p| p.name == 'paragraph' }.content
+
+			.le-mapcontainer
+				.col-sm-12.col-md-3.col-lg-3
+					ul.inc
+						li.new_york Techstars (New York)
+						li.Montreal FunderFuel (Montreal)
+						li.london Campus (London)
+						li.Lisbon Lisbon Challenge (Lisbon)
+						li.Mardid Tetuan Valey (Madrid)
+						li.Berlin Hub Raum (Berlin)
+						li.Munich Hardware.co (Munich)
+						li.Warshow D-raft (Warsaw)
+						li.Karachi The Nest (Karachi)
+						li.Dubai Astro Labs (Dubai)
+						li.Sydney Fish Burners (Sydney)
+						li.Tel_Aviv The Hive (Tel Aviv)
+						li.Nairobi iHub_ (Nairobi)
+						li.Johhannesburg Jozi Hub (Johannesburg)
+						li.Kampala Outbox (Kampala)
+						li.Lagos Co-Creation Hub (Lagos)
+						li.Accra iSpace (Accra)
+						li.Venice H-farm (Venice)
+						li.Palo_Alto Blackbox (Palo Alto)
+						li.Durham Underground (Durham)
+						li.Chicago 1971 (Chicago)
+				.col-sm-12.col-md-9.col-lg-9
+					#map
+						.point.new_york
+						.point.Montreal
+						.point.london
+						.point.Lisbon
+						.point.Mardid
+						.point.Berlin
+						.point.Munich
+						.point.Warshow
+						.point.Karachi
+						.point.Dubai
+						.point.Sydney
+						.point.Tel_Aviv
+						.point.Nairobi
+						.point.Johhannesburg
+						.point.Kampala
+						.point.Lagos
+						.point.Accra
+						.point.Venice
+						.point.Palo_Alto
+						.point.Durham
+						.point.Chicago
+						a.point.numa.PARIS href="http://paris.numa.co/" target="_blank" title="numa PARIS"
+						a.point.numa.MOSCOW href="http://moscow.numa.co/" target="_blank" title="numa MOSCOW"
+						a.point.numa.BENGALURU href="http://bengaluru.numa.co/" target="_blank" title="numa BENGALURU"
+						a.point.numa.CASABLANCA href="http://casablanca.numa.co/" target="_blank" title="numa CASABLANCA"
+						a.point.numa.MEXIC href="http://mexico.numa.co/" target="_blank" title="numa MEXIC"
+						a.point.numa.BARCELONA href="http://barcelona.numa.co/" target="_blank" title="numa BARCELONA"
+
+		section#partners
+			h3 =data.numa['partners'].find { |p| p.title == 'heading'}.content
+			ul.partners
+				-data.numa['partners'].each do |row|
+					li = image_tag "#{row['logo']}", :alt=> "#{row['name']}"
