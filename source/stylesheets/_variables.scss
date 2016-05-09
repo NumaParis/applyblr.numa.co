@@ -1,9 +1,21 @@
 // Defaults
+$sable: #FEE9C9;
+$corail: #EC6B69;
+$rose-fushia: #E50064;
+$jaune: #FFF489;
+$bleu-cyan: #46C1F0;
+$bleu-klein: #302683;
+$celadon: #8AC5C6;
+$turquoise: #29b2b7;
+$ardoise: #00587D;
+$mandarine: #F7AA59;
+$rose-candy: #E94190;
+$raisin: #731A66;
 
 $pi:     3.14;
 $font-size-base:     17px;/*  */
 $font-size-small:    15px;/*  */
-$font-family-base : 'UniversLTStd';
+$font-family-base: 'Lato', sans-serif;
 $line-height: 		   1.5 !default;
 
 $brand-primary :     #000000;
@@ -29,8 +41,8 @@ $link-hover-color:           $link-color;
 $link-hover-decoration:      none !default;
 
 $box-pad: 1.5em;
-$orange: #ff9c00;
-$blue: #002fc8;
+$orange: $bleu-klein;
+$blue: $bleu-cyan;
 
 $c00: #c3ff68;  //happygreen
 $c01: #0bde91;  //green

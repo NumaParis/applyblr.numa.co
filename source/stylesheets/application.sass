@@ -57,7 +57,7 @@ a
 p
 	strong, b
 		font-weight: normal
-		font-family: 'UniversLTStd-Bold'
+
 ul
 	margin: 0
 	padding: 0
@@ -70,16 +70,16 @@ i
 
 // Typography
 h1, h2, h3, h4, h5, h6 
-	font-family: UniversLTStd-Bold
+
 	margin-top: 0
 	line-height: 1.3
 	margin-bottom: $box-pad
 
 h1
 	font-size: $font-size-base * $pi / 1.5
-	font-family: 'UniversLTStd-Bold'
+
 h2
-	font-family: 'UniversLTStd-Bold'
+
 	font-size: $font-size-base * $pi / 2
 	margin-bottom: $grid-gutter-width /2
 h3
@@ -87,23 +87,6 @@ h3
 h4
 	font-size: $font-size-base
 
-@font-face
-	font-family: 'UniversLTStd'
-	src: url('/fonts/UniversLTStd.eot?#iefix') format('embedded-opentype'), url('/fonts/UniversLTStd.otf') format('opentype'), url('/fonts/UniversLTStd.woff') format('woff'), url('/fonts/UniversLTStd.ttf') format('truetype'), url('/fonts/UniversLTStd.svg#UniversLTStd') format('svg')
-	font-weight: normal
-	font-style: normal
-
-@font-face
-	font-family: 'UniversLTStd-Black'
-	src: url('/fonts/UniversLTStd-Black.eot?#iefix') format('embedded-opentype'), url('/fonts/UniversLTStd-Black.otf') format('opentype'), url('/fonts/UniversLTStd-Black.woff') format('woff'), url('/fonts/UniversLTStd-Black.ttf') format('truetype'), url('/fonts/UniversLTStd-Black.svg#UniversLTStd-Black') format('svg')
-	font-weight: normal
-	font-style: normal
-
-@font-face
-	font-family: 'UniversLTStd-Bold'
-	src: url('/fonts/UniversLTStd-Bold.eot?#iefix') format('embedded-opentype'),url('/fonts/UniversLTStd-Bold.otf')format('opentype'), url('/fonts/UniversLTStd-Bold.woff') format('woff'), url('/fonts/UniversLTStd-Bold.ttf')format('truetype'), url('/fonts/UniversLTStd-Bold.svg#UniversLTStd-Bold') format('svg')
-	font-weight: normal
-	font-style: normal
 
 // Scaffolding ---------------------------------
 .row, .content
@@ -158,13 +141,14 @@ nav.navbar
 ul.nav
 	float: left
 	li
+		font-weight: bold
 		@media screen and (min-width: $screen-sm)
 			border-bottom: 5px solid transparent	
 			+transition(200ms)
 			&.active
 				border-bottom: 5px solid white
 		&.active a
-			color: $blue
+			color: $orange
 			// background: white
 		a
 			&:hover,
@@ -178,7 +162,7 @@ ul.nav
 			padding-left: 7px
 			padding-right: 7px 
 			font-size: 15px
-			font-family: 'UniversLTStd-Bold'
+
 
 .navbar-toggle
 	background: #e6e6e6
@@ -214,7 +198,7 @@ ul.nav
 		margin-right: -$grid-gutter-width/2
 		margin-left: -$grid-gutter-width/2
 	
-	+background-image('intro_banner_numa.jpg')
+	+background-image('header.jpg')
 	padding-top: 85%
 	@media screen and (min-width: $screen-xs)
 		padding-top: 66%
@@ -246,9 +230,10 @@ ul.nav
 		max-width: 800px
 		+center-block
 	h1, p
-		font-family: 'UniversLTStd-Bold'
+
 		text-shadow: 1px 1px 0px fade-out(#000, .4)
 	h1
+		font-weight: bold
 		padding-top: $grid-gutter-width
 		@media screen and (min-width: 330px)
 			padding-left: 0
@@ -294,7 +279,7 @@ ul.nav
 		display: inline-block
 		font-size: 1.4em
 		line-height: 1em
-		font-family: 'UniversLTStd-Bold'
+
 		padding: 0px 5px
 		margin: 0px 4px
 		span
@@ -315,7 +300,7 @@ ul.nav
 		&:hover
 			text-decoration: none
 		
-		font-family: 'UniversLTStd-Bold'
+
 		background: white
 		color: $blue
 		font-size: 1em
@@ -402,7 +387,7 @@ section#video
 	+center-block
 	li
 		font-size: 15px
-		font-family: UniversLTStd-Bold
+
 		text-shadow: 1px 1px 1px fade-out(#000, 0.9)
 		display: block
 		border-bottom: 2px solid white
@@ -483,7 +468,7 @@ ul.metrics
 				display: block
 	
 	strong, b
-		font-family: 'UniversLTStd-Bold'
+
 
 #agenda.col-sm-12.col-md-5.col-lg-4
 	margin-left: 0
@@ -504,7 +489,7 @@ ul.wanted
 			strong
 				min-height: 60px
 				display: block
-				font-family: 'UniversLTStd-Bold'
+
 		@media screen and (max-width: $screen-xs)
 			padding-left: 5px
 			padding-right: 5px
@@ -516,29 +501,41 @@ ul.wanted
 			+center-block
 			padding-top: 70%
 			margin-bottom: 10px
-			border-radius: 100%
+			// border-radius: 100%
 		&:nth-child(1)
 			&:before
-				+background-image('mid_stage.svg')
-				background-size: auto 70%
+				+background-image('mid_stage.png')
+				background-color: $blue
+				background-size: auto 100%
+				border: 1px solid white
+				outline: 1px solid white
 				background-position: center
 				background-repeat: no-repeat
 		&:nth-child(2)
 			&:before
-				+background-image('early_stage.svg')
-				background-size: auto 70%
+				+background-image('early_stage.png')
+				background-color: $blue
+				background-size: auto 100%
+				border: 1px solid white
+				outline: 1px solid white
 				background-position: center
 				background-repeat: no-repeat
 		&:nth-child(3)
 			&:before
-				+background-image('various_industries.svg')
-				background-size: auto 70%
+				+background-image('various_industries.png')
+				background-color: $blue
+				background-size: auto 100%
+				border: 1px solid white
+				outline: 1px solid white
 				background-position: center
 				background-repeat: no-repeat
 		&:nth-child(4)
 			&:before
-				+background-image('digital.svg')
-				background-size: auto 70%
+				+background-image('digital.png')
+				background-color: $blue
+				background-size: auto 100%
+				border: 1px solid white
+				outline: 1px solid white
 				background-position: center
 				background-repeat: no-repeat
 
@@ -652,16 +649,16 @@ ul.keypoints
 .partners
 	li
 		padding: $grid-gutter-width/2
+		vertical-align: top
 		&:nth-child(1) img
-			max-width: 70px
+			max-width: 90px
 			position: relative
-			bottom: -20px
 		&:nth-child(2) img
-			max-width: 150px
+			max-width: 80px
 		&:nth-child(3) img
-			max-width: 100px
+			max-width: 120px
 		&:nth-child(4) img	
-			max-width: 130px
+			max-width: 100px
 
 		display: inline-block
 		img
@@ -815,7 +812,7 @@ ul.step
 		border-radius: 100%
 		text-align: center
 		color: white
-		font-family: 'UniversLTStd-Bold'
+
 
 .one
 	&:after
@@ -854,7 +851,7 @@ ul.people
 		strong
 			padding: $box-pad/2 0
 			font-weight: normal
-			font-family: 'UniversLTStd-Bold'
+
 		em
 			font-style: normal
 			font-size: 15px
@@ -939,7 +936,7 @@ blockquote
 		clear: both
 		margin-bottom: $grid-gutter-width/2
 	.name
-		font-family: 'UniversLTStd-Bold'
+
 		margin-bottom: $box-pad/2
 	.role
 		display: block
@@ -1009,7 +1006,7 @@ blockquote
 			text-decoration: underline
 		+transition(200ms)
 		cursor: pointer
-		font-family: 'UniversLTStd-Bold'
+
 		line-height: 1.5em
 
 .le-mapcontainer
@@ -1405,7 +1402,7 @@ ul.social // social links in the bootom footer
 			background: darken($blue, 9)
 		background: $blue
 		color: white
-		font-family: 'UniversLTStd-Bold'
+
 
 footer
 	clear: both
