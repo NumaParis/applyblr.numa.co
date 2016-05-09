@@ -30,9 +30,9 @@ ogp:
 					p =data.numa['intro'].find{ |p| p.name == 'subheading' }.content
 					p
 						a href="https://www.f6s.com/numabengaluru/apply" target="_blank" class='btn btn-lg btn-apply'
-							span class="countdown simple" data-date="April 24, 2016 00:00:25"
+							span class="countdown simple" data-date="June 15, 2016 00:23:00"
 							b Apply Now
-						| <div><a class='btn btn-info' target="_blank" href="https://paris.numa.co/Cycles-events/NUMA-Acceleration-Info-Sessions">Info Session at NUMA<b>25/4/16</b></a></div>
+						.infosession Info session every Friday at Numa
 
 	.content
 		section#accelerator
@@ -46,7 +46,7 @@ ogp:
 					li Agenda for Season 9
 					-data.numa['intro'].each do |row|
 						li = row['agenda']
-					li =link_to 'Apply Now', "https://www.f6s.com/numaparis-season9", :class => 'btn btn-lg btn-apply', :target=> '_blank'
+					li =link_to 'Apply Now', "https://www.f6s.com/numabengaluru/apply", :class => 'btn btn-lg btn-apply', :target=> '_blank'
 			
 			ul.metrics.clearfix
 				-data.numa['accelerator'].each do |row|
